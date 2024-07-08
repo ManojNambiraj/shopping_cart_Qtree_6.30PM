@@ -7,12 +7,15 @@ const Product = (props) => {
       <div className="card-body">
         <h5 className="card-title">{props.product.productName}</h5>
         <p className="card-text">Rs.{props.product.price}</p>
-        <p className="card-text">
-          {props.product.desc}
-        </p>
-        <a href="#" className="btn btn-primary">
+        <p className="card-text">{props.product.desc}</p>
+        <h6>{props.product.isStock ? "- inStock" : "- Out of stock"}</h6>
+        <button
+          className="btn btn-primary"
+          disabled={!props.product.isStock}
+          onClick={() => props.handleAddToCart(props.product)}
+        >
           Add to cart
-        </a>
+        </button>
       </div>
     </div>
   );
